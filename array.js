@@ -49,14 +49,14 @@ let favFoods = ["rice", 'egg', "fish", "meat", "banana", "orange", "nodolles", "
 // 08: Take out the last 8 food items from the above array using the Array destructuring. Hint: rest parameter.
 
 let [, , ...lastFoods] = favFoods;
-console.log(lastFoods)
+// console.log(lastFoods)
 // 09: Clone an Array(Shallow cloning);
 let favFoodsCopy = [...favFoods];
-console.log(favFoodsCopy)
+// console.log(favFoodsCopy)
 
 // 10: Empty an array using its length property
 console.log(favFoodsCopy.length = 0)
-console.log(favFoodsCopy)
+// console.log(favFoodsCopy)
 
 // 11: Create an array of 10 elements(number 1 to 10). Resize the array to length 6 once you find the number 5 in that array. Hint: Use for-loop.
 let numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -65,8 +65,8 @@ for (let index = 0; index < numArr.length; index++) {
      const element = numArr[index];
      if (element === 5) {
           numArr.length = 6;
-          console.log(numArr.length);
-          console.log(numArr)
+          // console.log(numArr.length);
+          // console.log(numArr)
           break
           
      }
@@ -76,7 +76,7 @@ for (let index = 0; index < numArr.length; index++) {
 
 // 12: Create an Array of 10 elements. Use the splice() method to empty the array.
 numArr.splice(0, numArr.length);
-console.log(numArr);
+// console.log(numArr);
 
      // 13: Create an Array of 10 elements. You can empty the array in multiple ways: using the length property, using the pop() method, using the shift() method, setting the array with [], or the splice() method. Which among these methods are most efficient and why?
      
@@ -100,14 +100,14 @@ const searchTerm = "Man";
 //      return fruit.includes(searchTerm);
 // });
 const hasPartialMatch = fruits.some(fruit => fruit.includes(searchTerm));
-     console.log(hasPartialMatch);
+     // console.log(hasPartialMatch);
 
 const findWithMan = fruits.find((value) => value.includes(searchTerm));
 
-console.log(findWithMan);
+// console.log(findWithMan);
 
 const filterWithMan = fruits.filter((value) => value.includes(searchTerm));
-console.log(filterWithMan);
+// console.log(filterWithMan);
 // 16: What is the difference between the slice() and splice() methods?
      // slice(): Does not alter the original array; returns a new array.
      // splice(): Modifies the original array by adding or removing elements.
@@ -117,12 +117,12 @@ console.log(filterWithMan);
 // 17: Create an Array of alphanumeric strings. Sort the elements in both ascending and descending orders. You must be doing this in an immutable way such that the source array never gets modified.
 
 const alphanumericArray = ["A1B2C3", "X9Y8Z7", "M4N5O6", "P7Q8R9", "D3E2F1"];
-function compare(a, b) {
-     if (a > b) return 1;
-     if (a == b) return 0;
-     if (a < b) return -1;
+// function compare(a, b) {
+//      if (a > b) return 1;
+//      if (a == b) return 0;
+//      if (a < b) return -1;
      
-};
+// };
 // let sortedArrAsc = alphanumericArray.toSorted();
 // let sortedArrDsc = alphanumericArray.toSorted().reverse();
 // console.log(sortedArrDsc, sortedArrAsc);
@@ -131,7 +131,7 @@ const sortedByNumAsc = alphanumericArray.toSorted((a, b) => {
      const numA = parseInt(a.match(/\d+/g || ["0"]).join(''));
      const numB = parseInt(b.match(/\d+/g || ["0"]).join(''));
      // console.log(parseInt(a.match(/\d+/g || ["0"]).join('')));
-     console.log(numA, numB);
+     // console.log(numA, numB);
      return numA - numB;
 });
 const sortedByNumDsc = alphanumericArray.toSorted((a, b) => {
@@ -139,7 +139,7 @@ const sortedByNumDsc = alphanumericArray.toSorted((a, b) => {
      const numB = parseInt(b.match(/\d+/g).join(''));
      return numB - numA;
 });
-console.log(sortedByNumAsc, sortedByNumDsc);
+// console.log(sortedByNumAsc, sortedByNumDsc);
 
 // 18: Can you give examples of sparse and dense arrays?
 
@@ -170,7 +170,7 @@ const sparseArray = new Array(5);
 
 // 20: How to convert an array to a string?
 let strArr = denseArray.toString();
-console.log(typeof strArr);
+// console.log(typeof strArr);
 
 const employees = [
      { id: 1, name: "Alice", departmentId: 1, salary: 5000 },
@@ -194,43 +194,104 @@ const departments = [
    
 // 21: Can you filter employees who work in the "Engineering" department?
 const findDepId = departments.find((crValue, index) =>crValue.name === 'Engineering');
-console.log(findDepId);
+// console.log(findDepId);
 
 const filterName = employees.filter(value => value.departmentId === findDepId.id);
-console.log(filterName.map(name=>name.name));
+// console.log(filterName.map(name=>name.name));
 
 //  T-022: Create a new array that combines employee names and department names in the format: "Alice (HR)".
-const empName = employees.map(employee => { return (employee.name, employee.departmentId) });
-// console.log(empName)
-const depName = departments.map(department => {return department.id,`(${department.name})`});
-const newArr = (empName, depName) => {
-     if (empName) {
+const findDepAll = departments.find((crValue) => crValue);
+// console.log(findDepAll)
+// const newArr = [...employees, ...departments];
+// console.log(newArr);
+
+const depName = departments.map(department => `(${department.name})`);
+// console.log(depName)
+
+// const empName = employees.map(employee => {
+//      if (findDepAll.id === employee.departmentId) {
           
-     }
-}
-console.log(empName)
-console.log(newArr);
-console.log(depName)
+//           return `${employee.name} (${findDepAll.name})`
+//      }
+// });
+
+const empName = employees.map(employee => {
+     const department = departments.find(dep => dep.id === employee.departmentId && dep.name === 'Sales');
+     return department ? `${employee.name} (${department.name})` : undefined;
+ });
+// console.log(empName.find(v =>v));
+// console.log(empName)
 
 //  T-023: Find the highest salary among employees.
+// const maxSalary = employees.toSorted((objA, objB) => objB.salary - objA.salary);
+
+// const highSalary = maxSalary.find(v =>v);
+// const highSalary = employees.reduce((max, emp) => emp.salary > max ? emp.salary : max, 0);
+const highSalary = Math.max(...employees.map(emp => emp.salary));
+
+console.log(highSalary);
+
+
 
 //  T-024: Check if there is at least one employee in the "Sales" department.
 
+const empNameSales = employees.map(employee => {
+     const department = departments.find(dep => dep.id === employee.departmentId && dep.name === 'Sales');
+     return department ? `${employee.name}` : undefined;
+ });
+console.log(empNameSales.find(v =>v));
+
 //  T-025: Write a function to filter employees earning more than 6000.
 
+const nameEmp = employees.filter(employee => employee.salary > 6000);
+console.log(nameEmp)
+
 //  T-026: Create an array of employee names only.
+const nameEmpOnly = employees.map(employee => employee.name);
+console.log(nameEmpOnly);
 
 //  T-027: Calculate the total salary of all employees using
+const totalSalary = employees.map(employee => employee.salary).reduce((acc, currValue) => {
+     acc = acc+ currValue;
+     return acc
+}, 0);
+     
+console.log(totalSalary)
 
 //  T-028: Is there any employee earning less than 5000?
+const minimumEarningEmp = employees.filter(employee => employee.salary < 5000);
+// console.log(minimumEarningEmp);
 
 //  T-029: Find the first employee who earns exactly 5100.
+const firstEmp = employees.find(employee => employee.salary === 5100);
+// console.log(firstEmp);
 
 //  T-030: Find the last employee in the "HR" department.
+// const findLastHr = employees.map(employee => employee);
+// const lastEmp = departments.findLast(dep => {
+//      dep.id === findLastHr.departmentId && dep.name === "HR"
+//      return findLastHr
+// });
+// console.log(lastEmp);
+const lastHrEmployee = employees.findLast(emp => {
+     const department = departments.find(dep => dep.id === emp.departmentId);
+     return department && department.name === "HR";
+   });
+   console.log(lastHrEmployee);
+   
 
 //  T-031: Find the first employee in the "Marketing" department.
+const firstMarketingEmployee = employees.find(emp => {
+     const department = departments.find(dep => dep.id === emp.departmentId);
+     return department && department.name === "Marketing";
+});
+// console.log(employees);
+// console.log(departments)
+   console.log(firstMarketingEmployee);
 
 //  T-032: Check if all employees earn more than 4000.
+const allEmp = employees.filter(employee => employee.salary > 4000);
+console.log(allEmp);
 
 //  T-033: Find the last employee in the "HR" department.
 
