@@ -55,7 +55,7 @@ let favFoodsCopy = [...favFoods];
 // console.log(favFoodsCopy)
 
 // 10: Empty an array using its length property
-console.log(favFoodsCopy.length = 0)
+// console.log(favFoodsCopy.length = 0)
 // console.log(favFoodsCopy)
 
 // 11: Create an array of 10 elements(number 1 to 10). Resize the array to length 6 once you find the number 5 in that array. Hint: Use for-loop.
@@ -173,16 +173,16 @@ let strArr = denseArray.toString();
 // console.log(typeof strArr);
 
 const employees = [
-     { id: 1, name: "Alice", departmentId: 1, salary: 5000, skills: ["Communication", "Recruitment"] },
-     { id: 2, name: "Bob", departmentId: 2, salary: 7000, skills: ["JavaScript", "React"] },
-     { id: 3, name: "Charlie", departmentId: 3, salary: 4500, skills: ["SEO", "Content Writing"] },
-     { id: 4, name: "Diana", departmentId: 1, salary: 5500, skills: ["Recruitment", "HR Policies"] },
-     { id: 5, name: "Edward", departmentId: 2, salary: 8000, skills: ["Node.js", "Database Management"] },
-     { id: 6, name: "Fiona", departmentId: 4, salary: 6000, skills: ["Negotiation", "Sales Strategies"] },
-     { id: 7, name: "George", departmentId: 3, salary: 5200, skills: ["Marketing Research", "Social Media"] },
-     { id: 8, name: "Helen", departmentId: 4, salary: 7200, skills: ["Customer Relationship", "Product Presentation"] },
-     { id: 9, name: "Ian", departmentId: 2, salary: 4800, skills: ["Python", "Machine Learning"] },
-     { id: 10, name: "Jane", departmentId: 1, salary: 5100, skills: ["Interviewing", "Employee Engagement"] },
+     { id: 1, name: "Alice", departmentId: 1, salary: 5000 },
+     { id: 2, name: "Bob", departmentId: 2, salary: 7000},
+     { id: 3, name: "Charlie", departmentId: 3, salary: 4500},
+     { id: 4, name: "Diana", departmentId: 1, salary: 5500},
+     { id: 5, name: "Edward", departmentId: 2, salary: 8000},
+     { id: 6, name: "Fiona", departmentId: 4, salary: 6000},
+     { id: 7, name: "George", departmentId: 3, salary: 5200},
+     { id: 8, name: "Helen", departmentId: 4, salary: 7200},
+     { id: 9, name: "Ian", departmentId: 2, salary: 4800},
+     { id: 10, name: "Jane", departmentId: 1, salary: 5100},
 ];
 
    
@@ -230,7 +230,7 @@ const empName = employees.map(employee => {
 // const highSalary = employees.reduce((max, emp) => emp.salary > max ? emp.salary : max, 0);
 const highSalary = Math.max(...employees.map(emp => emp.salary));
 
-console.log(highSalary);
+// console.log(highSalary);
 
 
 
@@ -240,16 +240,16 @@ const empNameSales = employees.map(employee => {
      const department = departments.find(dep => dep.id === employee.departmentId && dep.name === 'Sales');
      return department ? `${employee.name}` : undefined;
  });
-console.log(empNameSales.find(v =>v));
+// console.log(empNameSales.find(v =>v));
 
 //  T-025: Write a function to filter employees earning more than 6000.
 
 const nameEmp = employees.filter(employee => employee.salary > 6000);
-console.log(nameEmp)
+// console.log(nameEmp)
 
 //  T-026: Create an array of employee names only.
 const nameEmpOnly = employees.map(employee => employee.name);
-console.log(nameEmpOnly);
+// console.log(nameEmpOnly);
 
 //  T-027: Calculate the total salary of all employees using
 const totalSalary = employees.map(employee => employee.salary).reduce((acc, currValue) => {
@@ -261,11 +261,11 @@ console.log(totalSalary)
 
 //  T-028: Is there any employee earning less than 5000?
 const minimumEarningEmp = employees.filter(employee => employee.salary < 5000);
-// console.log(minimumEarningEmp);
+console.log(minimumEarningEmp);
 
 //  T-029: Find the first employee who earns exactly 5100.
 const firstEmp = employees.find(employee => employee.salary === 5100);
-// console.log(firstEmp);
+console.log(firstEmp);
 
 //  T-030: Find the last employee in the "HR" department.
 
@@ -287,8 +287,7 @@ const firstMarketingEmployee = employees.find(emp => {
      const department = departments.find(dep => dep.id === emp.departmentId);
      return department && department.name === "Marketing";
 });
-// console.log(employees);
-// console.log(departments)
+
    console.log(firstMarketingEmployee);
 
 //  T-032: Check if all employees earn more than 4000.
@@ -315,11 +314,9 @@ console.log(allEmpBelongToDep);
 const empNameWitDepName = employees.forEach(employee=>{
      const depName = departments.find(dep => dep.id === employee.departmentId);
      
-     
-     console.log(employee.name, depName?.name);
-     
 })
-// console.log(empNameWitDepName);
+console.log(empNameWitDepName);
+
 //  T-036: Extract all employee skill names into a single array.
 const allSkills = employees.flatMap(employee => employee.skills);
 console.log(allSkills);
@@ -329,8 +326,120 @@ const incrementSalary = employees.map(employee => employee.salary * 0.10 + emplo
 console.log(incrementSalary);
 
 //  T-038: Assume each employee can have multiple skills. Create an array of employee skills and flatten them. Example: [{name: "Alice", skills: ["Excel", "Management"]}, ...].
-
+const empSkills=[
+     "Communication",
+     "Recruitment",
+     "JavaScript",
+     "React",
+     "SEO",
+     "Content Writing",
+     "Recruitment",
+     "HR Policies",
+     "Node.js",
+     "Database Management",
+     "Negotiation",
+     "Sales Strategies",
+     "Marketing Research",
+     "Social Media",
+     "Customer Relationship",
+     "Product Presentation",
+     "Python",
+     "Machine Learning",
+     "Interviewing",
+     "Employee Engagement"
+]
+const addSkillsPro = employees.forEach(employee => {
+     arraySplice = empSkills.splice(0, 2);
+     employee.skills = arraySplice
+});
+// console.log(employees)
 //  T-039: Find the total salary of all employees working in the "Engineering" department.
+
+const engineeringDept = departments.find(dept => dept.name === "Engineering");
+const engineeringDeptId = engineeringDept.id;
+
+const totalSalaryEngDep = employees
+    .filter(emp => emp.departmentId === engineeringDeptId)
+    .reduce((sum, emp) => sum + emp.salary, 0);
+
+console.log(totalSalaryEngDep);
+
+
 
 //  T-040: Check if there is any department where all employees earn more than 5000.
 
+const departmentsWithHighSalaries = departments.filter(dept => {
+     const employeesInDept = employees.filter(emp => emp.departmentId === dept.id);
+     return employeesInDept.length > 0 && employeesInDept.every(emp => emp.salary > 5000);
+ });
+ 
+console.log(departmentsWithHighSalaries.map(dept => dept.name));
+ 
+// T-041: Assume each employee has a projects array (e.g., { id: 1, name: "Alice", projects: ["Project A", "Project B"] }). Find the total number of unique projects being handled across all employees.
+
+//  T-042: For each employee, find their department name and return an array of employee names with their department names.
+
+//  T-043: Get a list of names of employees earning more than 6000.
+const empNames = employees.filter(employee => employee.salary>6000 );
+console.log(empNames.map(emp=>emp.name));
+
+//  T-044: Write a for-of loop to print the names of all employees from the employees array.
+let allEmpName = '';
+for (const emp of employees) {
+     allEmpName += ' ' + emp.name;
+};
+console.log(allEmpName)
+
+//  T-045: Using a for-of loop, print the names of employees earning more than 5000.
+let employeeName = '';
+for (const emp of employees) {
+     emp.salary > 5000 ? employeeName += ' ' + emp.name : '';
+     
+}
+console.log(employeeName);
+
+//  T-046: Modify the for-of loop to destructure each employee object and log their name and salary.
+let nameAndSalary = '';
+for (const employee of employees) {
+     let { name, salary } = employee ;
+     nameAndSalary = `${name} and ${salary}`;
+     
+     console.log(nameAndSalary)
+}
+
+for (const { name, salary } of employees) {
+     console.log(`Name: ${name}, Salary: ${salary}`);
+ }
+ 
+//  T-047: Write a for-of loop to match employees with their departments and print the results.
+for (const employee of employees) {
+     let department = departments.find(dep => dep.id === employee.departmentId);
+     console.log(department? employee.name +' in '+ department.name:'')
+     
+}
+
+//  T-048: Use Array.prototype.entries() with a for-of loop to print the index and name of each employee.
+
+for (const [index, value] of employees.entries()) {
+     console.log(index, value.name)
+     
+}
+
+//  T-049: Given the array-like object below, access the second element and log it:
+
+const arrayLike = { 0: "First", 1: "Second", length: 2 };
+const conArray = Array.from(arrayLike);
+console.log(conArray);
+console.log(conArray.at(1));
+//  T-050: Write a function that takes a variable number of arguments and converts the arguments object into a real array using Array.from.
+
+//  T-051: Write a snippet to select all div elements on a webpage (using document.querySelectorAll) and convert the resulting NodeList into an array.
+
+//  T-052: Merge these two arrays into a single array:
+
+// const arr1 = [1, 2];
+// const arr2 = [3, 4];
+//  T-053: Create an array of n duplicate values using Array.from. Input: Create an array with 5 "A" values. Output: ["A", "A", "A", "A", "A"]
+
+//  T-054: Use Array.from to convert a string like "Hello" into an array of characters.
+ 
