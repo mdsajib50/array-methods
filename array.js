@@ -173,17 +173,18 @@ let strArr = denseArray.toString();
 // console.log(typeof strArr);
 
 const employees = [
-     { id: 1, name: "Alice", departmentId: 1, salary: 5000 },
-     { id: 2, name: "Bob", departmentId: 2, salary: 7000},
-     { id: 3, name: "Charlie", departmentId: 3, salary: 4500},
-     { id: 4, name: "Diana", departmentId: 1, salary: 5500},
-     { id: 5, name: "Edward", departmentId: 2, salary: 8000},
-     { id: 6, name: "Fiona", departmentId: 4, salary: 6000},
-     { id: 7, name: "George", departmentId: 3, salary: 5200},
-     { id: 8, name: "Helen", departmentId: 4, salary: 7200},
-     { id: 9, name: "Ian", departmentId: 2, salary: 4800},
-     { id: 10, name: "Jane", departmentId: 1, salary: 5100},
-];
+     { id: 1, name: "Alice", departmentId: 1, salary: 5000, projects: ["Project A", "Project B"] },
+     { id: 2, name: "Bob", departmentId: 2, salary: 7000, projects: ["Project B", "Project C"] },
+     { id: 3, name: "Charlie", departmentId: 3, salary: 4500, projects: ["Project A"] },
+     { id: 4, name: "Diana", departmentId: 1, salary: 5500, projects: ["Project D", "Project E"] },
+     { id: 5, name: "Edward", departmentId: 2, salary: 8000, projects: ["Project C", "Project F"] },
+     { id: 6, name: "Fiona", departmentId: 4, salary: 6000, projects: ["Project G"] },
+     { id: 7, name: "George", departmentId: 3, salary: 5200, projects: ["Project A", "Project H"] },
+     { id: 8, name: "Helen", departmentId: 4, salary: 7200, projects: ["Project G", "Project I"] },
+     { id: 9, name: "Ian", departmentId: 2, salary: 4800, projects: ["Project F", "Project J"] },
+     { id: 10, name: "Jane", departmentId: 1, salary: 5100, projects: ["Project E", "Project J"] },
+ ];
+ 
 
    
 const departments = [
@@ -376,8 +377,16 @@ const departmentsWithHighSalaries = departments.filter(dept => {
 console.log(departmentsWithHighSalaries.map(dept => dept.name));
  
 // T-041: Assume each employee has a projects array (e.g., { id: 1, name: "Alice", projects: ["Project A", "Project B"] }). Find the total number of unique projects being handled across all employees.
+const projects = employees.map(employee => employee.projects).flat();
+const uniqueProject=new Set(projects)
+console.log(uniqueProject.size);
 
 //  T-042: For each employee, find their department name and return an array of employee names with their department names.
+const newArray = employees.map(employee => {
+     const department = departments.find(dep => dep.id === employee.departmentId);
+     return department ? { name: employee.name, department: department.name } : [];
+});
+console.log(newArray)
 
 //  T-043: Get a list of names of employees earning more than 6000.
 const empNames = employees.filter(employee => employee.salary>6000 );
@@ -433,13 +442,25 @@ console.log(conArray);
 console.log(conArray.at(1));
 //  T-050: Write a function that takes a variable number of arguments and converts the arguments object into a real array using Array.from.
 
+function convertArray() {
+     console.log(Array.from(arguments))
+}
+convertArray(1, 2, 3, 4);
+
 //  T-051: Write a snippet to select all div elements on a webpage (using document.querySelectorAll) and convert the resulting NodeList into an array.
+const divElm = document.querySelectorAll("div");
+console.log(divElm)
+console.log(Array.from(divElm));
 
 //  T-052: Merge these two arrays into a single array:
 
-// const arr1 = [1, 2];
-// const arr2 = [3, 4];
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const singleArray = arr1.concat(arr2);
+console.log(singleArray);
 //  T-053: Create an array of n duplicate values using Array.from. Input: Create an array with 5 "A" values. Output: ["A", "A", "A", "A", "A"]
 
+console.log(Array.from({ length: 5 }, v =>"A"));
+
 //  T-054: Use Array.from to convert a string like "Hello" into an array of characters.
- 
+console.log(Array.from('Hello'));
